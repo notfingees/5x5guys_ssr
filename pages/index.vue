@@ -103,7 +103,7 @@ c  >|
     <section id="mint">
       
       <div class="mint_div">
-        <NFTCreator/>
+       <!-- <NFTCreator/> -->
 
         </div>
 
