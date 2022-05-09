@@ -1,16 +1,15 @@
 <template>
 <!-- eslint-disable -->
 <body>
+<client-only>
 <div id="app">
   <div id="container">
 
-    <client-only>
     <div v-on:click="switch_donny" class="left">
      <!-- <h2 id="shuffle">CLICK TO SHUFFLE</h2> -->
             <pre id="landing_donny">{{five_hundred_nfts[current_landing_donny_index]}}</pre>
         <button @click="mint(five_hundred_nfts[current_landing_donny_index])" id="mint_button" class="hide-mobile">MINT NOW</button>
       </div>
-      </client-only>
 
     <div class="right">
 
@@ -45,9 +44,7 @@
         <!--<div v-for="nft in fivebyfive_animated" :key="nft">
           <pre class="fivebyfive_nft">{{nft}}</pre>
           </div>-->
-          <client-only>
           <pre class="fivebyfive_nft">{{fivebyfive_animated[currently_shown_fivebyfive_animated_index]}}</pre>
-          </client-only>
           
           </div>
         </div>
@@ -147,8 +144,8 @@ c  >|
 
   <NavBar v-bind:is_home="true"/>
   </body>
+  </client-only>
 </template>
-
 <script>
 /* eslint-disable */
 import NavBar from '../components/NavBar.vue'
