@@ -1,12 +1,11 @@
 <template>
 <!-- eslint-disable -->
 <body>
-<client-only>
 <div id="app">
   <div id="container">
 
     <div v-on:click="switch_donny" class="left">
-     <!-- <h2 id="shuffle">CLICK TO SHUFFLE</h2> -->
+     <!-- <p id="shuffle">CLICK TO SHUFFLE</p> -->
             <pre id="landing_donny">{{five_hundred_nfts[current_landing_donny_index]}}</pre>
         <button @click="mint(five_hundred_nfts[current_landing_donny_index])" id="mint_button" class="hide-mobile">MINT NOW</button>
       </div>
@@ -14,10 +13,10 @@
     <div class="right">
 
       <span class="header_span">
-      <h1 class="header_text">5X5GUYS</h1><pre class="header_icon">{{header_icon}}</pre></span>
-      <h2 class="right_h2"><a href="#about">ABOUT</a></h2>
-      <h2 class="right_h2"><a href="#faq">FAQ</a></h2>
-      <h2 class="right_h2"><a href="#community">COMMUNITY</a></h2>
+      <p class="header_text">5X5GUYS</p><pre class="header_icon">{{header_icon}}</pre></span>
+      <p class="right_p"><a href="#about">ABOUT</a></p>
+      <p class="right_p"><a href="#faq">FAQ</a></p>
+      <p class="right_p"><a href="#community">COMMUNITY</a></p>
       
       </div>
   </div>
@@ -25,8 +24,8 @@
   <section id="about">
     <div class="about_container">
     <div class="fbf_left" id="hide-mobile">
-      <h1 class="fivebyfive_header">ABOUT</h1>
-      <h1 class="fivebyfive_header" style="font-size: 8vw;">5x5</h1>
+      <p class="fivebyfive_header">ABOUT</p>
+      <p class="fivebyfive_header" style="font-size: 8vw;">5x5</p>
       
       <p class="fivebyfive_details">
         5X5GUYS are the first on chain text NFT collection. Each 5X5GUY is based on a 5 by 5 text character, and is stored
@@ -50,8 +49,8 @@
         </div>
 
         <div class="fbf_left" id="hide-desktop">
-      <h1 class="fivebyfive_header">ABOUT</h1>
-      <h1 class="fivebyfive_header" style="font-size: 16vw;">5x5</h1>
+      <p class="fivebyfive_header">ABOUT</p>
+      <p class="fivebyfive_header" style="font-size: 16vw;">5x5</p>
       
       <p class="fivebyfive_details">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam eratidunt ut dolore magna aliquam erat 
       </p>
@@ -93,7 +92,7 @@ c  >|
 
     <section id="community">
 
-      <h1 id="faq_header">Join our community</h1>
+      <p id="faq_header">Join our community</p>
       
     </section>
   
@@ -116,18 +115,18 @@ c  >|
 
 
     <section id="faq">
-      <h1 id="faq_header">FAQ</h1>
+      <p id="faq_header">FAQ</p>
 
-      <h2 id="faq_question">How do I mint a 5X5GUY?</h2>
+      <p id="faq_question">How do I mint a 5X5GUY?</p>
       <p id="faq_answer">As long as you have a Metamask wallet, you can mint a 5X5GUY on this page by <a href='#mint'>clicking here!</a> Customize your 5X5GUY and press mint--we'll prompt you to connect your Metamask wallet and then mint your 5X5GUY for you with our custom smart contract.</p>
         
       <p id="faq_answer">Note that there are no fees (beyond gas and In Writing fees*) to mint, buy, trade, view, or sell 5X5GUYS! We also never see your private information—<a href='https://www.inwriting.io/about/#security' target='_blank'>learn more about blockchain and wallet security here.</a></p>
       <p id="faq_asterix">*Gas fees are Ethereum network fees you pay to transact on the Ethereum blockchain, and In Writing fees are the minting fee for minting text NFTs)</p>
 
-      <h2 id="faq_question">How are the 5X5GUYS stored?</h2>
+      <p id="faq_question">How are the 5X5GUYS stored?</p>
      <p id="faq_answer">5X5GUYS are stored 100% on chain as text NFTs through the In Writing API. That means your 5X5GUY NFTs will always have inherent value. 5X5GUYS are ERC721 compliant, and you can buy, sell, list, and trade 5X5GUYS through the In Writing marketplace, OpenSea, or any other NFT marketplace. <a target='_blank' href='https://www.inwriting.io/about/#technology'>Learn about In Writing and OpenSea compatibility here.</a></p>
 
-      <h2 id="faq_question">What are the 5X5GUYS traits?</h2>
+      <p id="faq_question">What are the 5X5GUYS traits?</p>
        <p id="faq_answer">5X5GUYS vary in 5 attributes: hair, eyes, mouth, ears, and facial hair. You can combine types of attributes to <a href='#mint'>create your own 5X5GUY here</a>, and <a href='attributes.html'>see every variation here.</a></p>
 
 
@@ -143,7 +142,6 @@ c  >|
   </div>
 
   <NavBar v-bind:is_home="true"/>
-  </client-only>
   </body>
   
 </template>
@@ -838,7 +836,7 @@ body {
   right: 12vw;
   top: 41.5vh;
 }
-h2 {
+p {
   font-size: 1.5vw;
   font-weight: medium;
 }
@@ -927,7 +925,7 @@ pre {
   top: 30.5vh;
 }
 
-.right_h2 {
+.right_p {
   font-size: 5vw;
   line-height: 2vh;
 }
