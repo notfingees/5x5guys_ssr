@@ -143,8 +143,9 @@ c  >|
   </div>
 
   <NavBar v-bind:is_home="true"/>
-  </body>
   </client-only>
+  </body>
+  
 </template>
 <script>
 /* eslint-disable */
