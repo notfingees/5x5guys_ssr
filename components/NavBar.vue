@@ -35,9 +35,6 @@ export default {
   name: 'NavBar',
   components: {
   },
-  props: {
-    is_home: Boolean,
-  },
   data () {
     return {
       accounts: [],
@@ -103,7 +100,7 @@ a:hover {
   height: 5vh;
   background-color: #FF8080;
   padding-top: 2vh;
-  margin-left: 5vw;
+  margin-left: 0vw;
   
 }
 .navbar-inner{
