@@ -290,7 +290,7 @@ export default {
 
 
         if (attribute_type == "hair"){
-              this.$data.chosen_hair_index = index
+             // this.$data.chosen_hair_index = index
                nft = this.add_layer(this.string_to_array(this.$data.base_donny), this.string_to_array(this.$data.asset_eyes[this.$data.chosen_eyes_index]))
                nft = this.add_layer(nft, this.string_to_array(this.$data.asset_hair[index]))
                nft = this.add_layer(nft, this.string_to_array(this.$data.asset_ears[this.$data.chosen_ears_index]))
