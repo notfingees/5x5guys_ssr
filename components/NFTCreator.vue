@@ -1,4 +1,5 @@
 <template>
+<!-- eslint-disable -->
 <div class="container">
   <div class="nft_creator">
     <div class="left">
@@ -51,7 +52,7 @@
         <div id="buttons">
             <p>{{current_guy_is_mintable ? 'Available' : 'Not Available'}}</p>
     <button id="randomize_button" @click="randomize_current_donny">RANDOMIZE</button>
-     <button id="mint_button">MINT NOW</button>
+     <button id="mint_button" @click="mint(current_donny)">MINT NOW</button>
      </div>
 
     </div>
@@ -63,6 +64,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import $ from 'jquery'
 export default {
   name: 'NFTCreator',
@@ -72,8 +74,9 @@ export default {
 
     current_visualize_donny: '',
 
-      current_donny: '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ',
-      base_donny: '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ',
+      current_DONNY: '    @,  \n   __@  \n  /-_|\\ \n  |/]v] \n  c  >| \n  *\\|.| \n  `--;\' \n        ',
+      current_donny: '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ',
+      base_donny: '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ',
 
       eyes_div_visible: "grid",
       ears_div_visible: "none",
@@ -91,34 +94,187 @@ export default {
 
       current_guy_is_mintable: false,
 
+      est_gas_fee: 400000,
 
-      hair: ['    @,  \n   __@  \n  / _|\\ \n  |/.v. \n  c  >| \n  |\\||| \n  `---’ \n        ', '    *   \n    /\\  \n   /--\\ \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n   ,--, \n  _|__|_\n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '  ,---, \n  |___| \n _|___|_\n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n   ___  \n  /_/_\\ \n  ; \\__\\\n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n //|||\\ \n|// , , \n||c  >| \n|||  -| \n/|`---` \n        ', '        \n        \n //|||\\ \n>o< , , \n||c  >| \n|||  -| \n  `---` \n        ', '        \n        \n  ///\\\\ \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  /\\\\\\\\ \n  / .\\\\ \n  c  >\\ \n  |  -| \n  `---’ \n        ', '        \n        \n  /|||\\ \n  /\\||\\ \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,//// \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  /\\\\\\\\ \n  / . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,8888 \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  88888 \n  8 . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,nNNN \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  mMMMm \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '  =o=   \n  8888  \n  88888 \n  8 . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n    ,// \n  ,;//, \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '   o,   \n   /_\\  \n  (___) \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,@@@@ \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  @@@@@ \n  @ . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n __o__  \n(_____) \n||/ , , \n||c  >| \n|||  -| \n|/`---` \n        ', '        \n        \n ///`\\\\ \n\\\\\\ , , \n//c  >| \n\\\\|  -| \n//`---` \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n  ,,,,, \n  ===== \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n //’’\\\\ \n|// , , \n||c  >| \n|||  -| \n|/`---` \n        ', '        \n        \n />o<||\\\n |//, ,/\n |c  >| \n ||  -| \n |`---` \n        ', '  ,888, \n ;88888;\n  88888 \n  ; . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n ///’’\\ \n|// , , \n||c  >| \n|||  -| \n/|`---` \n        ', '        \n        \n  >o<\\\\ \n  //. . \n  c  >| \n  |  -| \n  `---` \n        ', '        \n   ___  \n  /___\\_\n  ; . . \n  c  >| \n  |  -| \n  `---` \n        '],
+
+      hair: ['    @,  \n   __@  \n  / _|\\ \n  |/.v. \n  c  >| \n  |\\||| \n  `---\' \n        ', '    *   \n    /\\  \n   /--\\ \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n   ,--, \n  _|__|_\n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '  ,---, \n  |___| \n _|___|_\n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n   ___  \n  /_/_\\ \n  ; \\__\\\n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n //|||\\ \n|// , , \n||c  >| \n|||  -| \n/|`---` \n        ', '        \n        \n //|||\\ \n>o< , , \n||c  >| \n|||  -| \n  `---` \n        ', '        \n        \n  ///\\\\ \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  /\\\\\\\\ \n  / .\\\\ \n  c  >\\ \n  |  -| \n  `---\' \n        ', '        \n        \n  /|||\\ \n  /\\||\\ \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,//// \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  /\\\\\\\\ \n  / . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,8888 \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  88888 \n  8 . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,nNNN \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  mMMMm \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '  =o=   \n  8888  \n  88888 \n  8 . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n    ,// \n  ,;//, \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '   o,   \n   /_\\  \n  (___) \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,@@@@ \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  @@@@@ \n  @ . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n __o__  \n(_____) \n||/ , , \n||c  >| \n|||  -| \n|/`---` \n        ', '        \n        \n ///`\\\\ \n\\\\\\ , , \n//c  >| \n\\\\|  -| \n//`---` \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n  ,,,,, \n  ===== \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n //\'\'\\\\ \n|// , , \n||c  >| \n|||  -| \n|/`---` \n        ', '        \n        \n />o<||\\\n |//, ,/\n |c  >| \n ||  -| \n |`---` \n        ', '  ,888, \n ;88888;\n  88888 \n  ; . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n ///\'\'\\ \n|// , , \n||c  >| \n|||  -| \n/|`---` \n        ', '        \n        \n  >o<\\\\ \n  //. . \n  c  >| \n  |  -| \n  `---` \n        ', '        \n   ___  \n  /___\\_\n  ; . . \n  c  >| \n  |  -| \n  `---` \n        '],
       hair_descriptions: ["Knight Helmet", "Party Hat", "Bowl Hat", "Top Hat", "Cap Covering Eyes", "Long Hair", "Long Hair with Bow", "Dopey Hair", "Emo Hair", "Shaggy Hair", "Cool Slick Back", "Skin Fade", "Combed Church Hair", "Tight Curls Fade", "Tight Curls", "Quiff", "Bowl Cut", "Beehive", "Mohawk", "Santa Hat", "Curly Hair Fade", "Curly Hair", "Beret", "Wavy Long Hair", "Walter White Bald", "Headband", "Long Straight Hair", "Tucked Back with Bow", "Afro", "Wavy Hair No Fringe", "Short Hair with Bow", "Cap"],
 
-     asset_hair: ['    @,  \n   __@  \n  / _|\\ \n   / v  \n        \n   \\||  \n        \n        ', '    *   \n    /\\  \n   /  \\ \n        \n        \n        \n        \n        ', '        \n   ,--, \n  _|__|_\n        \n        \n        \n        \n        ', '  ,---, \n  |___| \n _|___|_\n        \n        \n        \n        \n        ', '        \n   ___  \n  /_/_\\ \n  ; \\__\\\n        \n        \n        \n        ', '        \n        \n //|||\\ \n|//     \n||      \n||      \n/|      \n        ', '        \n        \n //|||\\ \n>o<     \n||      \n||      \n        \n        ', '        \n        \n  ///\\\\ \n        \n        \n        \n        \n        ', '        \n        \n  /\\\\\\\\ \n  /  \\\\ \n      \\ \n        \n        \n        ', '        \n        \n  /|||\\ \n  /\\||\\ \n        \n        \n        \n        ', '        \n        \n   //// \n  ;     \n        \n        \n        \n        ', '        \n        \n        \n  ;     \n        \n        \n        \n        ', '        \n        \n  /\\\\\\\\ \n  /     \n        \n        \n        \n        ', '        \n        \n   8888 \n  ;     \n        \n        \n        \n        ', '        \n        \n  88888 \n  8     \n        \n        \n        \n        ', '        \n        \n   nNNN \n  ;     \n        \n        \n        \n        ', '        \n        \n  mMMMm \n  ;     \n        \n        \n        \n        ', '  =o=   \n  8888  \n  88888 \n  8     \n        \n        \n        \n        ', '        \n    ,// \n   ;//  \n  ;     \n        \n        \n        \n        ', '   o,   \n   /_\\  \n  (___) \n        \n        \n        \n        \n        ', '        \n        \n   @@@@ \n  ;     \n        \n        \n        \n        ', '        \n        \n  @@@@@ \n  @     \n        \n        \n        \n        ', '        \n __o__  \n(_____) \n||/     \n||      \n||      \n|/      \n        ', "        \n        \n ///'\\\\ \n\\\\\\     \n//      \n\\\\      \n//      \n        ", '        \n        \n        \n        \n        \n        \n        \n        ', '        \n  ,,,,, \n  ===== \n  ;     \n        \n        \n        \n        ', '        \n        \n //’’\\\\ \n|//     \n||      \n||      \n|/      \n        ', '        \n        \n />o<||\\\n |//   /\n |      \n |      \n |      \n        ', '  ,888, \n ;88888;\n  88888 \n  ;     \n        \n        \n        \n        ', '        \n        \n ///’’\\ \n|//     \n||      \n||      \n/|      \n        ', '        \n        \n  >o<\\\\ \n  //    \n        \n        \n        \n        ', '        \n   ___  \n  /___\\_\n  ;     \n        \n        \n        \n        '],
-      mouth: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >|&\n  |  .=’\n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  m| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  u| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  n| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  #| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  *| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  .| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  o| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  3| \n  `---’ \n        '],
+     asset_hair: ['    @,  \n   __@  \n  / _|\\ \n   / v  \n        \n   \\||  \n        \n        ', '    *   \n    /\\  \n   /  \\ \n        \n        \n        \n        \n        ', '        \n   ,--, \n  _|__|_\n        \n        \n        \n        \n        ', '  ,---, \n  |___| \n _|___|_\n        \n        \n        \n        \n        ', '        \n   ___  \n  /_/_\\ \n  ; \\__\\\n        \n        \n        \n        ', '        \n        \n //|||\\ \n|//     \n||      \n||      \n/|      \n        ', '        \n        \n //|||\\ \n>o<     \n||      \n||      \n        \n        ', '        \n        \n  ///\\\\ \n        \n        \n        \n        \n        ', '        \n        \n  /\\\\\\\\ \n  /  \\\\ \n      \\ \n        \n        \n        ', '        \n        \n  /|||\\ \n  /\\||\\ \n        \n        \n        \n        ', '        \n        \n   //// \n  ;     \n        \n        \n        \n        ', '        \n        \n        \n  ;     \n        \n        \n        \n        ', '        \n        \n  /\\\\\\\\ \n  /     \n        \n        \n        \n        ', '        \n        \n   8888 \n  ;     \n        \n        \n        \n        ', '        \n        \n  88888 \n  8     \n        \n        \n        \n        ', '        \n        \n   nNNN \n  ;     \n        \n        \n        \n        ', '        \n        \n  mMMMm \n  ;     \n        \n        \n        \n        ', '  =o=   \n  8888  \n  88888 \n  8     \n        \n        \n        \n        ', '        \n    ,// \n   ;//  \n  ;     \n        \n        \n        \n        ', '   o,   \n   /_\\  \n  (___) \n        \n        \n        \n        \n        ', '        \n        \n   @@@@ \n  ;     \n        \n        \n        \n        ', '        \n        \n  @@@@@ \n  @     \n        \n        \n        \n        ', '        \n __o__  \n(_____) \n||/     \n||      \n||      \n|/      \n        ', "        \n        \n ///'\\\\ \n\\\\\\     \n//      \n\\\\      \n//      \n        ", '        \n        \n        \n        \n        \n        \n        \n        ', '        \n  ,,,,, \n  ===== \n  ;     \n        \n        \n        \n        ', '        \n        \n //\'\'\\\\ \n|//     \n||      \n||      \n|/      \n        ', '        \n        \n />o<||\\\n |//   /\n |      \n |      \n |      \n        ', '  ,888, \n ;88888;\n  88888 \n  ;     \n        \n        \n        \n        ', '        \n        \n ///\'\'\\ \n|//     \n||      \n||      \n/|      \n        ', '        \n        \n  >o<\\\\ \n  //    \n        \n        \n        \n        ', '        \n   ___  \n  /___\\_\n  ;     \n        \n        \n        \n        '],
+      mouth: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >|&\n  |  .=\'\n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  m| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  u| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  n| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  #| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  *| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  .| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  o| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  3| \n  `---\' \n        '],
       mouth_descriptions: ["Straight Mouth", "Smoking", "Small Mustache", "Smile", "Frown", "Taped Up", "Puckered", "Small Dot", "Open Mouth", "Kiss"],
 
-        asset_mouth: ['        \n        \n        \n        \n        \n        \n        \n        ', '        \n        \n        \n        \n       &\n     .=’\n        \n        ', '        \n        \n        \n        \n        \n     m  \n        \n        ', '        \n        \n        \n        \n        \n     u  \n        \n        ', '        \n        \n        \n        \n        \n     n  \n        \n        ', '        \n        \n        \n        \n        \n     #  \n        \n        ', '        \n        \n        \n        \n        \n     *  \n        \n        ', '        \n        \n        \n        \n        \n     .  \n        \n        ', '        \n        \n        \n        \n        \n     o  \n        \n        ', '        \n        \n        \n        \n        \n     3  \n        \n        '],
-      ears: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  *  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  o  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  <  >| \n  |  -| \n  `---’ \n        '],
+        asset_mouth: ['        \n        \n        \n        \n        \n        \n        \n        ', '        \n        \n        \n        \n       &\n     .=\'\n        \n        ', '        \n        \n        \n        \n        \n     m  \n        \n        ', '        \n        \n        \n        \n        \n     u  \n        \n        ', '        \n        \n        \n        \n        \n     n  \n        \n        ', '        \n        \n        \n        \n        \n     #  \n        \n        ', '        \n        \n        \n        \n        \n     *  \n        \n        ', '        \n        \n        \n        \n        \n     .  \n        \n        ', '        \n        \n        \n        \n        \n     o  \n        \n        ', '        \n        \n        \n        \n        \n     3  \n        \n        '],
+      ears: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  *  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  o  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  <  >| \n  |  -| \n  `---\' \n        '],
       ears_descriptions: ["Regular Ears", "Earrings", "Hoop Earings", "Elf Ears"],
 
     asset_ears: ['        \n        \n        \n        \n        \n        \n        \n        ', '        \n        \n        \n        \n        \n  *     \n        \n        ', '        \n        \n        \n        \n        \n  o     \n        \n        ', '        \n        \n        \n        \n  <     \n        \n        \n        '],
 
-      eyes: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  |-o-o \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | === \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | ‘ , \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  |{}{} \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | ^ ^ \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | u u \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | - - \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | ; ; \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | , , \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | T T \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | $ $ \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  |<3<3 \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  |-#-# \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | X X \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  |[][] \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  |-O-O \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | ^ - \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | - . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | O o \n  c  >| \n  |  -| \n  `---’ \n        '],
+      eyes: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  |-o-o \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | === \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | ‘ , \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  |{}{} \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | ^ ^ \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | u u \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | - - \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | ; ; \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | , , \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | T T \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | $ $ \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  |<3<3 \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  |-#-# \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | X X \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  |[][] \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  |-O-O \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | ^ - \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | - . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | O o \n  c  >| \n  |  -| \n  `---\' \n        '],
       eyes_descriptions: ["Regular Eyes", "Round Glasses", "Robot Visor", "Goofy Eyes", "Funky Glasses", "Happy Eyes", "Closed, Content Eyes", "Squinting Eyes", "Crying Eyes", "Feminine Eyes", "T_T eyes", "Dollar $ign Eyes", "Heart Eyes", "Sunglasses", "Dead Eyes", "Square Glasses", "Oval Glasses", "Happy Wink", "Sly Wink", "O.o Eyes"],
     
     asset_eyes: ['        \n        \n        \n        \n        \n        \n        \n        ', '        \n        \n        \n   -o-o \n        \n        \n        \n        ', '        \n        \n        \n    === \n        \n        \n        \n        ', '        \n        \n        \n    ‘ , \n        \n        \n        \n        ', '        \n        \n        \n   {}{} \n        \n        \n        \n        ', '        \n        \n        \n    ^ ^ \n        \n        \n        \n        ', '        \n        \n        \n    u u \n        \n        \n        \n        ', '        \n        \n        \n    - - \n        \n        \n        \n        ', '        \n        \n        \n    ; ; \n        \n        \n        \n        ', '        \n        \n        \n    , , \n        \n        \n        \n        ', '        \n        \n        \n    T T \n        \n        \n        \n        ', '        \n        \n        \n    $ $ \n        \n        \n        \n        ', '        \n        \n        \n   <3<3 \n        \n        \n        \n        ', '        \n        \n        \n   -#-# \n        \n        \n        \n        ', '        \n        \n        \n    X X \n        \n        \n        \n        ', '        \n        \n        \n   [][] \n        \n        \n        \n        ', '        \n        \n        \n   -O-O \n        \n        \n        \n        ', '        \n        \n        \n    ^ - \n        \n        \n        \n        ', '        \n        \n        \n    - . \n        \n        \n        \n        ', '        \n        \n        \n    O o \n        \n        \n        \n        '],
 
-      facial_hair: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |_/-\\_\n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | /-\\ \n  `-\\\\’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `-\\\\’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |\\\\-/ \n  `-\\/’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `--;’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | mmm \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | .-. \n  `-||| \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---’ \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | :-: \n  `-’;’ \n        ', '\n        \n  ,---, \n  | . . \n  c  >| \n  ;\\\\-/ \n  `\\\\// \n    `’ \n        '],
+      facial_hair: ['        \n        \n  ,---, \n  | . . \n  c  >| \n  |_/-\\_\n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | /-\\ \n  `-\\\\\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `-\\\\\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |\\\\-/ \n  `-\\/\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `--;\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | mmm \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | .-. \n  `-||| \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  |  -| \n  `---\' \n        ', '        \n        \n  ,---, \n  | . . \n  c  >| \n  | :-: \n  `-\';\' \n        ', '\n        \n  ,---, \n  | . . \n  c  >| \n  ;\\\\-/ \n  `\\\\// \n    `\' \n        '],
       facial_hair_descriptions: ["Fancy Handlebar", "Long Goatee", "Chin Mustache", "Beard", "Goatee", "Mustache", "Scraggly Chin Mustache", "No Mustache", "Short Beard", "Long Beard"],
     
-    asset_facial_hair: ['        \n        \n        \n        \n        \n   _/ \\_\n        \n        ', '        \n        \n        \n        \n        \n    / \\ \n    \\\\  \n        ', '        \n        \n        \n        \n        \n        \n    \\\\  \n        ', '        \n        \n        \n        \n        \n   \\\\ / \n    \\/  \n        ', '        \n        \n        \n        \n        \n        \n     ;  \n        ', '        \n        \n        \n        \n        \n    mmm \n        \n        ', '        \n        \n        \n        \n        \n    . . \n    ||| \n        ', '        \n        \n        \n        \n        \n        \n        \n        ', '        \n        \n        \n        \n        \n    : : \n    ’’  \n        ', '        \n        \n        \n        \n        \n  ;\\\\ / \n  `\\\\// \n    `’  '],
+    asset_facial_hair: ['        \n        \n        \n        \n        \n   _/ \\_\n        \n        ', '        \n        \n        \n        \n        \n    / \\ \n    \\\\  \n        ', '        \n        \n        \n        \n        \n        \n    \\\\  \n        ', '        \n        \n        \n        \n        \n   \\\\ / \n    \\/  \n        ', '        \n        \n        \n        \n        \n        \n     ;  \n        ', '        \n        \n        \n        \n        \n    mmm \n        \n        ', '        \n        \n        \n        \n        \n    . . \n    ||| \n        ', '        \n        \n        \n        \n        \n        \n        \n        ', '        \n        \n        \n        \n        \n    : : \n    \'\'  \n        ', '        \n        \n        \n        \n        \n  ;\\\\ / \n  `\\\\// \n    `\'  '],
     }
   },
 
   methods: {
 
+      async estimateGas (data) {
+
+        try {
+
+        console.log("in estimatedGas with", data)
+
+        const API_URL = "https://eth-ropsten.alchemyapi.io/v2/DvWsjnC-R_avHhru9sO5aalRj283Cj1_"
+      const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
+      const web3 = createAlchemyWeb3(API_URL)
+    //  const contract = require("@/assets/_5x5guys.json")
+      const contractAddress = "0x40FA1E59DFfAD2448EFc9d5a0AC1763Ec09650BF"
+   //   const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
+
+     // const temp = 25e15; // It was 2 eth when I did it with 0.0025e18 - didn't have enough funds ;( @gieson
+     // var temp = await nftContract.methods.get_minting_cost().call()
+      var temp = parseInt(0)
+      console.log("minting_cost is", temp)
+      
+     const est_tx = {
+        from: this.$data.account,
+        to: contractAddress,
+        value: temp, 
+        data: data,
+      }
+      var self = this
+      await web3.eth.estimateGas(est_tx, function(error, hash){
+        console.log("Error is: " + error)
+        console.log("Estimated value is: " + hash)
+       // self.est_gas_price = hash/1000000000
+        self.est_gas_fee = hash
+
+      })
+
+      return this.$data.est_gas_fee
+        }
+        catch (error) {
+          alert(error.message)
+          //this.manageActionRegister('❌', 'Error: ' + error.message)
+        }
+      },
+
+      async send_transaction_mint (tx, s){
+          try {
+        const txHash = await window.ethereum
+            .request({
+                method: 'eth_sendTransaction',
+                params: [tx],
+            });
+        // redirecting =========
+        /*
+        const encoded = Base64.encodeURI(s)
+        console.log(encoded)
+        */
+        await console.log(txHash);
+      //  window.location.href = "../success.html?string=" + encoded + "&txHash=" + txHash;
+        // =====================
+        return {
+            success: true,
+            status: "✅ Check out your transaction on Etherscan: https://etherscan.io/tx/" + txHash
+            
+        }
+    } catch (error) {
+
+     // this.manageActionRegister('❌', 'Error: ' + error.message)
+     alert(error.message)
+     console.log(error.message)
+    
+    }
+      },
+
+      unraw(str) {
+    return str.replace("\\", String.raw`${"\\"}`)
+},
+
+      async mint(s){
+
+
+
+    console.log("in mint with", s)
+    console.log("length is", this.$data.current_donny.charAt(61))
+    console.log("DNONY length is", this.$data.current_DONNY.charAt(61))
+    
+    //s = 'P   @,  \n   __@  \n  /-_|\\ \n  |/]v] \n  c  >| \n  *\\|.| \n  `--;\' \n        '
+
+    if (window.ethereum){
+      console.log('Metamask Installed');
+    } else {
+      console.log('Please install MetaMask!');
+    }
+
+    try {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    this.$data.account = accounts[0]
+    }
+    catch (e) {
+
+      alert('❗️', 'Error. Check to make sure you\'re logged in to MetaMask')
+      console.log(e);
+    }
+
+    const API_URL = "https://eth-ropsten.alchemyapi.io/v2/DvWsjnC-R_avHhru9sO5aalRj283Cj1_"
+      
+      
+      //const PUBLIC_KEY = "0x6D8D7C6092F802eb6a3409AE0C2E453dEc120783";
+
+      const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
+      const web3 = createAlchemyWeb3(API_URL)
+
+      const contract = require("@/assets/_5x5guys.json")
+      const contractAddress = "0x40FA1E59DFfAD2448EFc9d5a0AC1763Ec09650BF"
+      const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
+
+    const nonce = await web3.eth.getTransactionCount(this.$data.account, "latest") //get latest nonce
+
+      var temp = parseInt(0)// minting cost
+
+      var tx = {}
+
+      console.log("Lengtho f donny string is", s.length)
+
+      const encodedTransaction = nftContract.methods.mint_5x5guy(s).encodeABI()
+        console.log("ENCODED TRANSACTION", encodedTransaction)
+        var estimatedGas = await this.estimateGas(encodedTransaction)
+
+        console.log("nonce is", nonce)
+        console.log('estimatedGas is', estimatedGas)
+      // list price validation required
+        tx = {
+          from: this.$data.account,
+          to: contractAddress,
+          nonce: nonce.toString(16),
+          gas: estimatedGas.toString(16),
+          value: temp.toString(16),
+          data: nftContract.methods.mint_5x5guy(s).encodeABI(),
+        }
+
+        this.send_transaction_mint(tx, s)
+
+        
+
+
+
+
+
+    },
+  
+
+
+
+
+      /* non mint related */
 
     visualize_current_donny(attribute_type, index){
 
