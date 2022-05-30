@@ -1,65 +1,113 @@
 <template>
-<!-- eslint-disable -->
-<div class="container">
-  <div class="nft_creator">
-    <div class="left">
-        <pre class="current_donny">{{current_donny}}</pre>
-    </div>
+  <!-- eslint-disable -->
+  <div class="container">
+    <div class="nft_creator">
+      <div class="left">
+        <pre class="current_donny">{{ current_donny }}</pre>
+      </div>
 
-    <div class="right">
+      <div class="right">
         <div class="attribute_types">
-            <p @click="expandOptions('ears')" class="attribute_type_description">Ears</p>
-            <p @click="expandOptions('eyes')" class="attribute_type_description">Eyes</p>
-            <p @click="expandOptions('facial_hair')" class="attribute_type_description">Facial Hairs</p>
-            <p @click="expandOptions('hair')" class="attribute_type_description">Hairs</p>
-            <p @click="expandOptions('mouth')" class="attribute_type_description">Mouths</p>
+          <p @click="expandOptions('ears')" class="attribute_type_description">
+            Ears
+          </p>
+          <p @click="expandOptions('eyes')" class="attribute_type_description">
+            Eyes
+          </p>
+          <p
+            @click="expandOptions('facial_hair')"
+            class="attribute_type_description"
+          >
+            Facial Hairs
+          </p>
+          <p @click="expandOptions('hair')" class="attribute_type_description">
+            Hairs
+          </p>
+          <p @click="expandOptions('mouth')" class="attribute_type_description">
+            Mouths
+          </p>
         </div>
 
-        <div class="facial_hair_options" v-bind:style="{display: facial_hair_div_visible}">
-            <div v-for="(facial_hair_type, index) in facial_hair" :key="index">
-          
-               <pre class="fivebyfive_nft" @mouseleave="change_current_donny('facial_hair', chosen_facial_hair_index)" @mouseover="visualize_current_donny('facial_hair', index)" @click="change_current_donny('facial_hair', index)">{{facial_hair_type}}</pre>
-            </div>
+        <div
+          class="facial_hair_options"
+          v-bind:style="{ display: facial_hair_div_visible }"
+        >
+          <div v-for="(facial_hair_type, index) in facial_hair" :key="index">
+            <pre
+              class="fivebyfive_nft"
+              @mouseleave="
+                change_current_donny('facial_hair', chosen_facial_hair_index)
+              "
+              @mouseover="visualize_current_donny('facial_hair', index)"
+              @click="change_current_donny('facial_hair', index)"
+              >{{ facial_hair_type }}</pre
+            >
+          </div>
         </div>
 
-        <div class="hair_options" v-bind:style="{display: hair_div_visible}">
-            <div v-for="(hair_type, index) in hair" :key="index">
-          
-               <pre class="fivebyfive_nft" @mouseleave="change_current_donny('hair', chosen_hair_index)" @mouseover="visualize_current_donny('hair', index)" @click="change_current_donny('hair', index)">{{hair_type}}</pre>
-            </div>
+        <div class="hair_options" v-bind:style="{ display: hair_div_visible }">
+          <div v-for="(hair_type, index) in hair" :key="index">
+            <pre
+              class="fivebyfive_nft"
+              @mouseleave="change_current_donny('hair', chosen_hair_index)"
+              @mouseover="visualize_current_donny('hair', index)"
+              @click="change_current_donny('hair', index)"
+              >{{ hair_type }}</pre
+            >
+          </div>
         </div>
 
-        <div class="eyes_options" v-bind:style="{display: eyes_div_visible}">
-            <div v-for="(eye_type, index) in eyes" :key="index">
-          
-               <pre class="fivebyfive_nft" @mouseleave="change_current_donny('eyes', chosen_eyes_index)" @mouseover="visualize_current_donny('eyes', index)" @click="change_current_donny('eyes', index)">{{eye_type}}</pre>
-            </div>
+        <div class="eyes_options" v-bind:style="{ display: eyes_div_visible }">
+          <div v-for="(eye_type, index) in eyes" :key="index">
+            <pre
+              class="fivebyfive_nft"
+              @mouseleave="change_current_donny('eyes', chosen_eyes_index)"
+              @mouseover="visualize_current_donny('eyes', index)"
+              @click="change_current_donny('eyes', index)"
+              >{{ eye_type }}</pre
+            >
+          </div>
         </div>
 
-        <div class="ears_options" v-bind:style="{display: ears_div_visible}">
-            <div v-for="(ear_type, index) in ears" :key="index">
-          
-               <pre class="fivebyfive_nft" @mouseleave="change_current_donny('ears', chosen_ears_index)" @mouseover="visualize_current_donny('ears', index)" @click="change_current_donny('ears', index)">{{ear_type}}</pre>
-            </div>
+        <div class="ears_options" v-bind:style="{ display: ears_div_visible }">
+          <div v-for="(ear_type, index) in ears" :key="index">
+            <pre
+              class="fivebyfive_nft"
+              @mouseleave="change_current_donny('ears', chosen_ears_index)"
+              @mouseover="visualize_current_donny('ears', index)"
+              @click="change_current_donny('ears', index)"
+              >{{ ear_type }}</pre
+            >
+          </div>
         </div>
 
-        <div class="mouth_options" v-bind:style="{display: mouth_div_visible}">
-            <div v-for="(mouth_type, index) in mouth" :key="index">
-          
-               <pre class="fivebyfive_nft" @mouseleave="change_current_donny('mouth', chosen_mouth_index)" @mouseover="visualize_current_donny('mouth', index)" @click="change_current_donny('mouth', index)">{{mouth_type}}</pre>
-            </div>
+        <div
+          class="mouth_options"
+          v-bind:style="{ display: mouth_div_visible }"
+        >
+          <div v-for="(mouth_type, index) in mouth" :key="index">
+            <pre
+              class="fivebyfive_nft"
+              @mouseleave="change_current_donny('mouth', chosen_mouth_index)"
+              @mouseover="visualize_current_donny('mouth', index)"
+              @click="change_current_donny('mouth', index)"
+              >{{ mouth_type }}</pre
+            >
+          </div>
         </div>
         <div id="buttons">
-            <p>{{current_guy_is_mintable ? 'Available' : 'Not Available'}}</p>
-    <button id="randomize_button" @click="randomize_current_donny">RANDOMIZE</button>
-     <button id="mint_button" @click="mint(current_donny)">MINT NOW</button>
-     </div>
-
+          <p>{{ current_guy_is_mintable ? "Available" : "Not Available" }}</p>
+          <button id="randomize_button" @click="randomize_current_donny">
+            RANDOMIZE
+          </button>
+          <button id="mint_button" @click="mint(current_donny)">
+            MINT NOW
+          </button>
+        </div>
+      </div>
     </div>
 
-  </div>
- 
-  <div class="spacer"></div>
+    <div class="spacer"></div>
   </div>
 </template>
 
@@ -134,11 +182,14 @@ export default {
       const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
       const web3 = createAlchemyWeb3(API_URL)
     //  const contract = require("@/assets/_5x5guys.json")
-      const contractAddress = "0x40FA1E59DFfAD2448EFc9d5a0AC1763Ec09650BF"
+      const contractAddress = "0x9B629a867C7CCDed073a298854aFC06D95B9f550"
    //   const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
      // const temp = 25e15; // It was 2 eth when I did it with 0.0025e18 - didn't have enough funds ;( @gieson
-     // var temp = await nftContract.methods.get_minting_cost().call()
+      
+
+
+
       var temp = parseInt(0)
       console.log("minting_cost is", temp)
       
@@ -233,7 +284,7 @@ export default {
       const web3 = createAlchemyWeb3(API_URL)
 
       const contract = require("@/assets/_5x5guys.json")
-      const contractAddress = "0x40FA1E59DFfAD2448EFc9d5a0AC1763Ec09650BF"
+      const contractAddress = "0x9B629a867C7CCDed073a298854aFC06D95B9f550"
       const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
     const nonce = await web3.eth.getTransactionCount(this.$data.account, "latest") //get latest nonce
@@ -467,39 +518,32 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 ::-webkit-scrollbar {
-    width: 1vw;
+  width: 1vw;
   background: transparent;
 }
 
-
- 
-
 ::-webkit-scrollbar-thumb {
   height: 10px;
-  background: black; 
+  background: black;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: black;
 }
 
-
 .spacer {
   height: 15vh;
 }
 
-button{
+button {
   font-family: Futura;
   font-weight: bold;
   background-color: transparent;
   color: black;
   font-size: 1.5vw;
   border: 0.5vw black solid;
-
 }
-
 
 button:hover {
   color: white;
@@ -507,14 +551,14 @@ button:hover {
 }
 
 #buttons {
-    display: block;
-    bottom: 0;
-    right: 0;
-    position: relative;
+  display: block;
+  bottom: 0;
+  right: 0;
+  position: relative;
 }
 
 #mint_button {
-  background-color: #FF8080;
+  background-color: #ff8080;
   /*position: relative;
   bottom: 0;
   right: 0;
@@ -522,108 +566,114 @@ button:hover {
 }
 
 #randomize_button {
-    background-color: #FF8080;
-
+  background-color: #ff8080;
 }
 
 .container {
-    text-align: center;
+  text-align: center;
 }
 
 h2 {
-    font-family: Futura;
-    font-weight: bold;
-    font-size: 2vw;
-    color: black;
+  font-family: Futura;
+  font-weight: bold;
+  font-size: 2vw;
+  color: black;
 }
 
 p {
-    font-family: Futura;
-    font-weight: normal;
-    font-size: 1vw;
-    color: black;
+  font-family: Futura;
+  font-weight: normal;
+  font-size: 1vw;
+  color: black;
 }
 
 pre {
-    font-family: Menlo;
+  font-family: Menlo;
 }
 
 .current_donny {
-    font-size: 5vw;
-    text-align: center;
-    margin-top: -3vh;
-    margin-left: -3vw;
+  font-size: 5vw;
+  text-align: center;
+  margin-top: -3vh;
+  margin-left: -3vw;
 }
 
-.facial_hair_options, .hair_options, .mouth_options, .ears_options, .eyes_options {
-    padding-left: 1vw;
-    padding-right: 1vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 13vh 13vh 13vh 13vh 13vh;
-    height: 60vh;
+.facial_hair_options,
+.hair_options,
+.mouth_options,
+.ears_options,
+.eyes_options {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 13vh 13vh 13vh 13vh 13vh;
+  height: 60vh;
 }
 
 .hair_options {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .fivebyfive_nft {
-    font-size: 0.75vw;
+  font-size: 0.75vw;
 }
 
 .attribute_types {
-    display: flex;
-    gap: 2vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    justify-content: center;
+  display: flex;
+  gap: 2vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  justify-content: center;
 }
 
 .nft_creator {
-    display: flex;
-    padding-bottom: 0vh;
+  display: flex;
+  padding-bottom: 0vh;
 }
 .left {
-    width: 50%;
-    height: 90vh;
+  width: 50%;
+  height: 90vh;
 }
 .right {
-    width: 50%;
-    height: 90vh;
+  width: 50%;
+  height: 90vh;
 }
 
 @media only screen and (max-width: 600px) and (orientation: portrait) {
-.facial_hair_options, .hair_options, .mouth_options, .ears_options, .eyes_options {
+  .facial_hair_options,
+  .hair_options,
+  .mouth_options,
+  .ears_options,
+  .eyes_options {
     padding-left: 1vw;
     padding-right: 1vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 8vh 8vh 8vh 8vh 8vh 8vh 8vh;
     height: 70vh;
-}
+  }
 
-.right {
+  .right {
     width: 70%;
     height: 90vh;
-}
+  }
 
-.fivebyfive_nft {
+  .fivebyfive_nft {
     font-size: 2vw;
-}
+  }
 
-#mint_button {
-  display: none;
-}
+  #mint_button {
+    display: none;
+  }
 
-#randomize_button {
-}
+  #randomize_button {
+  }
 
-.nft_creator {
+  .nft_creator {
     display: flex;
     padding-bottom: 0vh;
     margin-bottom: -30vh;
-}
-
+  }
 }
 </style>
