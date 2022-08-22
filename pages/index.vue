@@ -81,7 +81,7 @@ c  >|
             <p class="stats_description">SUPPLY</p></span
           >
           <span class="stats_span"
-            ><p class="stats_number">{{ 5555 - number_minted }}</p>
+            ><p class="stats_number">{{ 0 }}</p>
             <p class="stats_description">REMAINING</p></span
           >
           <span class="stats_span"
@@ -888,7 +888,7 @@ export default {
       est_gas_fee: null,
 
       number_minted: null,
-      minting_cost: null,
+      minting_cost: 0,
     };
   },
 
@@ -946,11 +946,11 @@ export default {
         console.log("in estimatedGas with", data);
 
         const API_URL =
-          "https://eth-ropsten.alchemyapi.io/v2/DvWsjnC-R_avHhru9sO5aalRj283Cj1_";
+          "NO_LONGER_VALID";
         const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
         const web3 = createAlchemyWeb3(API_URL);
         //  const contract = require("@/assets/_5x5guys.json")
-        const contractAddress = "0x9B629a867C7CCDed073a298854aFC06D95B9f550";
+        const contractAddress = "0x8fa77bFf25B6b557FA2d333b05C2De259Ce33eCA";
         //   const nftContract = new web3.eth.Contract(contract.abi, contractAddress)
 
         // const temp = 25e15; // It was 2 eth when I did it with 0.0025e18 - didn't have enough funds ;( @gieson
@@ -1066,7 +1066,7 @@ export default {
       */
 
       const API_URL =
-        "https://eth-ropsten.alchemyapi.io/v2/DvWsjnC-R_avHhru9sO5aalRj283Cj1_";
+        "NO_LONGER_VALID";
 
       //const PUBLIC_KEY = "0x6D8D7C6092F802eb6a3409AE0C2E453dEc120783";
 
@@ -1074,7 +1074,7 @@ export default {
       const web3 = createAlchemyWeb3(API_URL);
 
       const contract = require("@/assets/_5x5guys.json");
-      const contractAddress = "0x9B629a867C7CCDed073a298854aFC06D95B9f550";
+      const contractAddress = "0x8fa77bFf25B6b557FA2d333b05C2De259Ce33eCA";
       const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
       const nonce = await web3.eth.getTransactionCount(
@@ -1122,7 +1122,7 @@ export default {
     document.addEventListener("scroll", this.handleTopWriteScroll);
 
     const API_URL =
-        "https://eth-ropsten.alchemyapi.io/v2/DvWsjnC-R_avHhru9sO5aalRj283Cj1_";
+        "NO_LONGER_VALID";
 
       //const PUBLIC_KEY = "0x6D8D7C6092F802eb6a3409AE0C2E453dEc120783";
 
@@ -1130,7 +1130,7 @@ export default {
       const web3 = createAlchemyWeb3(API_URL);
 
       const contract = require("@/assets/_5x5guys.json");
-      const contractAddress = "0x9B629a867C7CCDed073a298854aFC06D95B9f550";
+      const contractAddress = "0x8fa77bFf25B6b557FA2d333b05C2De259Ce33eCA";
       const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
     this.$data.minting_cost = await nftContract.methods.get_minting_cost().call()
